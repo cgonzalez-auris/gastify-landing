@@ -5,25 +5,25 @@ import ChatBubble from './ui/ChatBubble.astro';
 const features = [
   {
     title: 'Registro de gastos',
-    subtitle: 'Tan facil como enviar un mensaje',
+    subtitle: 'Tan fácil como enviar un mensaje',
     description: 'Texto, voz o fotos de boletas. Gastify entiende todo y lo clasifica al instante.',
     mockupId: 'expense',
   },
   {
     title: 'Presupuesto mensual',
-    subtitle: 'Nunca mas te pases del presupuesto',
-    description: 'Define tu limite y recibe alertas automaticas al 80% y 100% de tu presupuesto.',
+    subtitle: 'Nunca más te pases del presupuesto',
+    description: 'Define tu límite y recibe alertas automáticas al 80% y 100% de tu presupuesto.',
     mockupId: 'budget',
   },
   {
-    title: 'Resumenes con IA',
-    subtitle: 'Entiende tu plata sin esfuerzo',
-    description: 'Resumenes diarios, semanales y mensuales con analisis inteligente de tus habitos.',
+    title: 'Resúmenes con IA',
+    subtitle: 'Entiende tus finanzas sin esfuerzo',
+    description: 'Resúmenes diarios, semanales y mensuales con análisis inteligente de tus hábitos.',
     mockupId: 'summary',
   },
   {
     title: 'Recordatorios',
-    subtitle: 'Nunca mas olvides un pago',
+    subtitle: 'Nunca más olvides un pago',
     description: 'Crea recordatorios con lenguaje natural. Soporta recurrencia diaria, semanal y mensual.',
     mockupId: 'reminder',
   },
@@ -79,11 +79,15 @@ const features = [
             {feature.mockupId === 'summary' && (
               <PhoneMockup>
                 <ChatBubble sender="bot" time="21:00">
-                  <p class="font-semibold text-teal-light">📋 Resumen del dia</p>
+                  <p class="font-semibold text-teal-light">📋 Resumen del día</p>
                   <p class="mt-2">🚗 Transporte: $6.500</p>
                   <p>🍕 Restaurantes: $8.000</p>
                   <p>🛒 Supermercado: $45.000</p>
                   <p class="mt-2 border-t border-gray-600 pt-2 font-semibold">Total: $59.500</p>
+                </ChatBubble>
+                <ChatBubble sender="user" time="21:01">en qué más gasto este mes?</ChatBubble>
+                <ChatBubble sender="bot" time="21:01">
+                  <p>Tu categoría más alta es 🛒 Supermercado con un 45% del total.</p>
                 </ChatBubble>
               </PhoneMockup>
             )}
@@ -93,7 +97,11 @@ const features = [
                 <ChatBubble sender="bot" time="11:00">
                   <p class="font-semibold text-teal-light">Recordatorio creado</p>
                   <p class="mt-1">🔔 Pagar internet</p>
-                  <p class="text-[11px] text-gray-400">Mensual — dia 5 a las 10:00</p>
+                  <p class="text-[11px] text-gray-400">Mensual — día 5 a las 10:00</p>
+                </ChatBubble>
+                <ChatBubble sender="bot" time="05/03">
+                  <p class="font-semibold text-teal-light">⏰ Recordatorio</p>
+                  <p class="mt-1">Hoy toca pagar internet. No lo olvides!</p>
                 </ChatBubble>
               </PhoneMockup>
             )}
