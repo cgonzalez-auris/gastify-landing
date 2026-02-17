@@ -1,0 +1,32 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class:list={['relative mx-auto w-[280px] sm:w-[300px]', className]}>
+  <!-- Phone frame -->
+  <div class="rounded-[2.5rem] border-2 border-gray-700 bg-wa-frame p-2 shadow-2xl shadow-teal/10">
+    <!-- Notch -->
+    <div class="mx-auto mb-2 h-6 w-28 rounded-b-2xl bg-black"></div>
+    <!-- Screen -->
+    <div class="rounded-[2rem] bg-wa-bg overflow-hidden">
+      <!-- WhatsApp header -->
+      <div class="flex items-center gap-3 bg-wa-frame px-4 py-3">
+        <div class="flex h-9 w-9 items-center justify-center rounded-full bg-teal">
+          <img src="/gastify-logo.png" alt="Gastify" class="h-6 w-6 rounded-full" />
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-white">Gastify</p>
+          <p class="text-[11px] text-gray-400">en linea</p>
+        </div>
+      </div>
+      <!-- Chat area -->
+      <div class="flex flex-col gap-2 px-3 py-4">
+        <slot />
+      </div>
+    </div>
+  </div>
+</div>

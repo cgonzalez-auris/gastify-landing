@@ -1,0 +1,21 @@
+---
+interface Props {
+  sender: 'user' | 'bot';
+  time?: string;
+}
+
+const { sender, time = '' } = Astro.props;
+const isUser = sender === 'user';
+---
+
+<div class:list={['flex', isUser ? 'justify-end' : 'justify-start']}>
+  <div
+    class:list={[
+      'max-w-[80%] rounded-lg px-3 py-2 text-[13px] leading-relaxed text-white',
+      isUser ? 'rounded-tr-none bg-wa-user' : 'rounded-tl-none bg-wa-bot',
+    ]}
+  >
+    <slot />
+    {time && <span class="mt-0.5 block text-right text-[10px] text-gray-400">{time}</span>}
+  </div>
+</div>

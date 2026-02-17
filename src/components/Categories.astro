@@ -1,0 +1,38 @@
+---
+const categories = [
+  { emoji: '🚗', name: 'Transporte' },
+  { emoji: '🛒', name: 'Supermercado' },
+  { emoji: '🏠', name: 'Servicios' },
+  { emoji: '🍕', name: 'Restaurantes' },
+  { emoji: '💊', name: 'Salud' },
+  { emoji: '🎮', name: 'Entretenimiento' },
+  { emoji: '🚬', name: 'Vicios' },
+  { emoji: '📚', name: 'Educacion' },
+  { emoji: '👕', name: 'Vestuario' },
+  { emoji: '🏡', name: 'Hogar' },
+  { emoji: '🐾', name: 'Mascotas' },
+  { emoji: '🏦', name: 'Creditos' },
+  { emoji: '📦', name: 'Otros' },
+];
+---
+
+<section class="py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center fade-up">
+      <h2 class="text-3xl font-bold text-white sm:text-4xl">13 categorias, cero esfuerzo</h2>
+      <p class="mt-4 text-lg text-gray-400">Gastify clasifica tus gastos automaticamente en la categoria correcta.</p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+      {categories.map((cat, i) => (
+        <div
+          class="fade-up flex items-center gap-3 rounded-xl border border-border bg-surface px-4 py-3 transition-all hover:border-teal/30 hover:shadow-md hover:shadow-teal/5"
+          style={`transition-delay: ${i * 50}ms`}
+        >
+          <span class="text-2xl">{cat.emoji}</span>
+          <span class="text-sm font-medium text-white">{cat.name}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

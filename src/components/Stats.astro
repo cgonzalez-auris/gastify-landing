@@ -1,0 +1,25 @@
+---
+const stats = [
+  { value: 14, suffix: '', label: 'paises soportados' },
+  { value: 13, suffix: '', label: 'categorias con emoji' },
+  { value: 3, suffix: '', label: 'formas de registrar' },
+  { value: 24, suffix: '/7', label: 'resumenes automaticos' },
+];
+---
+
+<section class="py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="fade-up rounded-3xl border border-border bg-surface p-8 sm:p-12">
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {stats.map((stat) => (
+          <div class="text-center">
+            <div class="text-5xl font-extrabold text-teal">
+              <span data-count={stat.value} data-suffix={stat.suffix}>0{stat.suffix}</span>
+            </div>
+            <p class="mt-2 text-gray-400">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

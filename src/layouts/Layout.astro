@@ -1,0 +1,125 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Gastify | Controla tus gastos desde WhatsApp y Telegram',
+  description = 'Registra gastos con un mensaje, recibe resúmenes automáticos y controla tu presupuesto. Gratis para 14 países de Latinoamérica.',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Gastify" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL('/gastify-logo.png', Astro.site)} />
+    <meta property="og:locale" content="es_LA" />
+    <meta property="og:site_name" content="Gastify" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL('/gastify-logo.png', Astro.site)} />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Gastify",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "WhatsApp, Telegram",
+      "description": description,
+      "url": "https://gastifyapp.com",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    })} />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body class="antialiased">
+    <slot />
+
+    <script>
+      // Scroll animations
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+
+      // Navbar scroll effect
+      const navbar = document.getElementById('navbar');
+      if (navbar) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 20) {
+            navbar.classList.add('bg-bg/80', 'backdrop-blur-xl', 'border-b', 'border-border');
+          } else {
+            navbar.classList.remove('bg-bg/80', 'backdrop-blur-xl', 'border-b', 'border-border');
+          }
+        });
+      }
+
+      // Counter animation
+      const counters = document.querySelectorAll('[data-count]');
+      const counterObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target as HTMLElement;
+              const target = parseInt(el.dataset.count || '0');
+              const suffix = el.dataset.suffix || '';
+              let current = 0;
+              const step = Math.ceil(target / 40);
+              const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                  current = target;
+                  clearInterval(timer);
+                }
+                el.textContent = current + suffix;
+              }, 30);
+              counterObserver.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      counters.forEach((el) => counterObserver.observe(el));
+    </script>
+  </body>
+</html>
