@@ -135,6 +135,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       );
 
       counters.forEach((el) => counterObserver.observe(el));
+
+      // TikTok Pixel — channel button click events
+      document.querySelectorAll('[data-ttq-event]').forEach((el) => {
+        el.addEventListener('click', () => {
+          const channel = (el as HTMLElement).dataset.ttqChannel || '';
+          window.ttq?.track('ClickButton', { content_name: channel });
+        });
+      });
     </script>
   </body>
 </html>
