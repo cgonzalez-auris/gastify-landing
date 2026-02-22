@@ -8,8 +8,8 @@ interface Props {
 const { href, variant = 'teal', class: className = '' } = Astro.props;
 
 const variantClasses: Record<string, string> = {
-  whatsapp: 'bg-[#25D366] hover:bg-[#1fb855] text-white',
-  telegram: 'bg-[#2AABEE] hover:bg-[#229ED9] text-white',
+  whatsapp: 'bg-[#25D366] hover:bg-[#1fb855] text-white btn-cta-whatsapp',
+  telegram: 'bg-[#2AABEE] hover:bg-[#229ED9] text-white btn-cta-telegram',
   teal: 'bg-teal hover:bg-teal-dark text-white',
 };
 ---
@@ -21,7 +21,7 @@ const variantClasses: Record<string, string> = {
   data-ttq-event={variant === 'whatsapp' || variant === 'telegram' ? 'ClickButton' : undefined}
   data-ttq-channel={variant === 'whatsapp' || variant === 'telegram' ? variant : undefined}
   class:list={[
-    'inline-flex items-center gap-2 rounded-full px-6 py-3 font-semibold transition-all duration-200 hover:scale-105',
+    'inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-lg font-bold transition-all duration-200 hover:scale-105',
     variantClasses[variant],
     className,
   ]}

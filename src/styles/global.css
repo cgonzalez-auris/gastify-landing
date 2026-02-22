@@ -36,3 +36,38 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* CTA button pulse animations */
+@keyframes pulse-whatsapp {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35), 0 0 0 0 rgba(37, 211, 102, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35), 0 0 0 10px rgba(37, 211, 102, 0);
+  }
+}
+
+@keyframes pulse-telegram {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(42, 171, 238, 0.3), 0 0 0 0 rgba(42, 171, 238, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(42, 171, 238, 0.3), 0 0 0 10px rgba(42, 171, 238, 0);
+  }
+}
+
+.btn-cta-whatsapp {
+  animation: pulse-whatsapp 2.5s ease-in-out infinite;
+}
+
+.btn-cta-whatsapp:hover {
+  box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5);
+}
+
+.btn-cta-telegram {
+  animation: pulse-telegram 2.5s ease-in-out 0.3s infinite;
+}
+
+.btn-cta-telegram:hover {
+  box-shadow: 0 6px 28px rgba(42, 171, 238, 0.45);
+}
