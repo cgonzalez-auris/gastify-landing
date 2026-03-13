@@ -12,8 +12,20 @@ const features = [
   {
     title: 'Presupuesto mensual',
     subtitle: 'Nunca más te pases del presupuesto',
-    description: 'Define tu límite y recibe alertas automáticas al 80% y 100% de tu presupuesto.',
+    description: 'Define tu límite y recibe alertas automáticas. Tu disponible se calcula con ingresos, gastos y ahorros.',
     mockupId: 'budget',
+  },
+  {
+    title: 'Ingresos',
+    subtitle: 'Registra todo lo que entra',
+    description: 'Sueldo, ventas, freelance o cualquier ingreso. Gastify lo clasifica y lo integra a tu presupuesto automáticamente.',
+    mockupId: 'income',
+  },
+  {
+    title: 'Ahorros',
+    subtitle: 'Ahorra sin complicaciones',
+    description: 'Registra ahorros con un mensaje. Define montos o porcentajes y ve cómo se ajusta tu presupuesto en tiempo real.',
+    mockupId: 'savings',
   },
   {
     title: 'Resúmenes con IA',
@@ -26,6 +38,12 @@ const features = [
     subtitle: 'Nunca más olvides un pago',
     description: 'Crea recordatorios con lenguaje natural. Soporta recurrencia diaria, semanal y mensual.',
     mockupId: 'reminder',
+  },
+  {
+    title: 'Multicuentas',
+    subtitle: 'Comparte tus finanzas en equipo',
+    description: 'Crea hasta 5 cuentas, invita miembros y lleva las finanzas del hogar, negocio o grupo. Todos ven los movimientos al instante.',
+    mockupId: 'multiaccounts',
   },
 ];
 ---
@@ -72,7 +90,41 @@ const features = [
                 </ChatBubble>
                 <ChatBubble sender="bot" time="18:00">
                   <p class="font-semibold text-yellow-400">⚠️ Alerta de presupuesto</p>
-                  <p class="mt-1">Llevas $400.000 (80%) de tu presupuesto de $500.000</p>
+                  <p class="mt-1">Presupuesto: $500.000</p>
+                  <p>+ Ingresos: $800.000</p>
+                  <p>− Gastos: $420.000</p>
+                  <p>− Ahorros: $80.000</p>
+                  <p class="mt-2 border-t border-gray-600 pt-2 font-semibold text-teal-light">Disponible: $800.000</p>
+                </ChatBubble>
+              </PhoneMockup>
+            )}
+            {feature.mockupId === 'income' && (
+              <PhoneMockup>
+                <ChatBubble sender="user" time="01/03">recibi mi sueldo 850000</ChatBubble>
+                <ChatBubble sender="bot" time="01/03">
+                  <p class="font-semibold text-teal-light">Ingreso registrado</p>
+                  <p class="mt-1">💰 Salario — $850.000</p>
+                </ChatBubble>
+                <ChatBubble sender="user" time="10:45">ingreso freelance 120000</ChatBubble>
+                <ChatBubble sender="bot" time="10:45">
+                  <p class="font-semibold text-teal-light">Ingreso registrado</p>
+                  <p class="mt-1">💻 Freelance — $120.000</p>
+                  <p class="mt-1 text-[11px] text-gray-400">Ingresos del mes: $970.000</p>
+                </ChatBubble>
+              </PhoneMockup>
+            )}
+            {feature.mockupId === 'savings' && (
+              <PhoneMockup>
+                <ChatBubble sender="user" time="09:00">ahorro 50000 para vacaciones</ChatBubble>
+                <ChatBubble sender="bot" time="09:00">
+                  <p class="font-semibold text-teal-light">Ahorro registrado</p>
+                  <p class="mt-1">🏖️ Vacaciones — $50.000</p>
+                </ChatBubble>
+                <ChatBubble sender="user" time="09:05">ahorro 10% para fondo de emergencia</ChatBubble>
+                <ChatBubble sender="bot" time="09:05">
+                  <p class="font-semibold text-teal-light">Ahorro registrado</p>
+                  <p class="mt-1">🛡️ Fondo de emergencia — $97.000</p>
+                  <p class="mt-1 text-[11px] text-gray-400">Ahorros del mes: $147.000</p>
                 </ChatBubble>
               </PhoneMockup>
             )}
@@ -102,6 +154,21 @@ const features = [
                 <ChatBubble sender="bot" time="05/03">
                   <p class="font-semibold text-teal-light">⏰ Recordatorio</p>
                   <p class="mt-1">Hoy toca pagar internet. No lo olvides!</p>
+                </ChatBubble>
+              </PhoneMockup>
+            )}
+            {feature.mockupId === 'multiaccounts' && (
+              <PhoneMockup>
+                <ChatBubble sender="user" time="08:30">crear cuenta Hogar</ChatBubble>
+                <ChatBubble sender="bot" time="08:30">
+                  <p class="font-semibold text-teal-light">Cuenta creada</p>
+                  <p class="mt-1">🏠 Hogar — lista para usar</p>
+                  <p class="mt-1 text-[11px] text-gray-400">Invita miembros con /invitar</p>
+                </ChatBubble>
+                <ChatBubble sender="user" time="08:32">cambiar a cuenta Hogar</ChatBubble>
+                <ChatBubble sender="bot" time="08:32">
+                  <p class="font-semibold text-teal-light">Cuenta activa: Hogar 🏠</p>
+                  <p class="mt-1">Ahora tus movimientos se registran en esta cuenta.</p>
                 </ChatBubble>
               </PhoneMockup>
             )}
